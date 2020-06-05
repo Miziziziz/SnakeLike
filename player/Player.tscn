@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://colored_tilemap_packed.png" type="Texture" id=1]
+[ext_resource path="res://player/Player.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.521569 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.521569 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.521569 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Player" type="Node2D"]
+position = Vector2( 4, -4 )
+script = ExtResource( 2 )
+
+[node name="HeadSprite" type="Sprite" parent="." groups=[
+"snake_head",
+]]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 24, 56, 8, 8 )
+
+[node name="Camera2D" type="Camera2D" parent="HeadSprite"]
+current = true
+zoom = Vector2( 0.4, 0.4 )
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Sprite2" type="Sprite" parent="Sprites"]
+position = Vector2( -8, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 8, 56, 8, 8 )
+
+[node name="Sprite3" type="Sprite" parent="Sprites"]
+position = Vector2( -16, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 16, 56, 8, 8 )
+
+[node name="Sprite4" type="Sprite" parent="Sprites"]
+position = Vector2( -24, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 56, 8, 8 )
+
+[node name="MoveTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/die = SubResource( 1 )
+anims/idle = SubResource( 2 )
