@@ -16,4 +16,5 @@ func choose_dir_to_move_in():
 	cur_direction = get_dir_to_flee_from(snake_head.global_position)
 
 func kill():
+	emit_signal("killed")
 	queue_free()

@@ -6,6 +6,7 @@ var safe_tiles = [
 ]
 
 onready var player = $Player
+onready var portal = $Portal
 onready var map_top_left = $MapTopLeft
 onready var map_bot_right = $MapBotRight
 
@@ -136,3 +137,9 @@ func get_path_from_pos_to_pos(start_pos: Vector2, end_pos: Vector2):
 		return []
 	
 	return astar.get_point_path(astar_points_cache[start_key], astar_points_cache[end_key])
+
+func clear_tile(pos: Vector2):
+	set_cellv(world_to_map(pos), -1)
+
+func reached_portal():
+	return player.head_sprite.global_position.distance_squared_to(portal.global_position) < 3

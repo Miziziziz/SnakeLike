@@ -34,4 +34,5 @@ func choose_dir_to_move_in():
 	cur_direction = get_dir_to_flee_from(nearest_orc.global_position)
 
 func kill():
+	emit_signal("killed")
 	queue_free()

@@ -27,5 +27,6 @@ func fire():
 	arrow_inst.init()
 
 func kill():
+	emit_signal("killed")
 	$Orc.queue_free()
 	dead = true

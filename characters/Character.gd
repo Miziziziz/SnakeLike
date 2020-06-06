@@ -10,6 +10,8 @@ var facing_right = false
 
 var group_to_ignore = ""
 
+signal killed
+
 func move(slide_on_walls=true):
 	if cur_direction == null:
 		return false
@@ -113,7 +115,7 @@ func has_line_of_sight_one_way(start_coord, end_coord):
 		points.invert()
 	
 	for point in points:
-		if tilemap.get_cell(point[0], point[1]) >= 0:
+		if !tilemap.can_move_on_tile(tilemap.get_cell(point[0], point[1])):
 			return false
 	return true
 

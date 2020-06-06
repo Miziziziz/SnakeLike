@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://colored_tilemap_packed.png" type="Texture" id=1]
 [ext_resource path="res://monochrome_tilemap_packed.png" type="Texture" id=2]
+[ext_resource path="res://characters/Sheep.gd" type="Script" id=3]
 
 [node name="Sheep" type="Node2D" groups=[
 "characters",
 "sheep",
 ]]
+script = ExtResource( 3 )
 
 [node name="Graphics" type="Node2D" parent="."]
 

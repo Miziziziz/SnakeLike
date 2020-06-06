@@ -24,6 +24,11 @@ func _ready():
 		last_positions.append(sprite.global_position)
 		offset += Vector2.DOWN * 8
 	update_rotations()
+	
+	var num_of_segments = LevelManager.cur_player_length
+	if num_of_segments > 3:
+		for i in range(num_of_segments - 3):
+			add_segment()
 
 func _process(delta):
 	if Input.is_action_just_pressed("exit"):
@@ -103,6 +108,9 @@ func move():
 		if projectile.has_method("incremement_move_counter"):
 			projectile.incremement_move_counter()
 	last_direction = cur_direction
+	
+	if tilemap.reached_portal():
+		LevelManager.load_next_level(sprites.size())
 
 const ANGLE_SPRITE_POS = Vector2(16, 56)
 const STRAIGHT_SPRITE_POS = Vector2(8, 56)
@@ -205,6 +213,7 @@ func kill():
 	$AnimationPlayer.play("die")
 	dead = true
 	move_timer.stop()
+	$CanvasLayer/RestartMessage.show()
 
 func get_positions_taken():
 	return last_positions + [head_sprite.global_position]

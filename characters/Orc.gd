@@ -36,4 +36,5 @@ func check_to_kill():
 			villager.kill()
 
 func kill():
+	emit_signal("killed")
 	queue_free()
