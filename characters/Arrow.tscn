@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://colored_tilemap_packed.png" type="Texture" id=1]
+[ext_resource path="res://characters/Arrow.gd" type="Script" id=2]
+
+[node name="Arrow" type="Node2D" groups=[
+"projectiles",
+]]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -0.5, -0.5 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.5, 0.5 )
+region_enabled = true
+region_rect = Rect2( 89, 38, 1, 7 )

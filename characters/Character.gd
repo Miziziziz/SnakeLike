@@ -4,27 +4,28 @@ class_name Character
 
 onready var tilemap : TileMap = get_parent()
 
-enum DIRECTIONS {UP, DOWN, LEFT, RIGHT}
+enum DIRECTIONS {UP, RIGHT, DOWN, LEFT}
 var cur_direction = DIRECTIONS.UP
 var facing_right = false
 
 var group_to_ignore = ""
 
-func move():
+func move(slide_on_walls=true):
 	if cur_direction == null:
-		return
+		return false
 	var offset = get_offset_for_dir(cur_direction)
 	if tilemap.can_move_to_pos(global_position + offset, true, group_to_ignore):
 		pass
-	elif tilemap.can_move_to_pos(global_position + get_offset_for_dir((cur_direction + 1) % DIRECTIONS.size())):
+	elif slide_on_walls and tilemap.can_move_to_pos(global_position + get_offset_for_dir((cur_direction + 1) % DIRECTIONS.size())):
 		offset = get_offset_for_dir((cur_direction + 1) % DIRECTIONS.size())
-	elif tilemap.can_move_to_pos(global_position + get_offset_for_dir((cur_direction + 3) % DIRECTIONS.size())):
+	elif slide_on_walls and tilemap.can_move_to_pos(global_position + get_offset_for_dir((cur_direction + 3) % DIRECTIONS.size())):
 		offset = get_offset_for_dir((cur_direction + 3) % DIRECTIONS.size())
 	else:
-		return
+		return false
 	
 	global_position += offset
 	round_position()
+	return true
 
 func get_offset_for_dir(direction):
 	var offset = Vector2()

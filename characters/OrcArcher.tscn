@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://colored_tilemap_packed.png" type="Texture" id=1]
+[ext_resource path="res://characters/OrcArcher.gd" type="Script" id=2]
+[ext_resource path="res://characters/Dummy.gd" type="Script" id=3]
+
+[node name="OrcArcher" type="Node2D" groups=[
+"characters",
+]]
+script = ExtResource( 2 )
+
+[node name="Orc" type="Sprite" parent="." groups=[
+"characters",
+"orcs",
+]]
+position = Vector2( 0, 8 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 88, 0, 8, 8 )
+script = ExtResource( 3 )
+
+[node name="BowGraphics" type="Node2D" parent="." groups=[
+"walls",
+]]
+
+[node name="BowBase" type="Sprite" parent="BowGraphics"]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 75, 24, 2, 4 )
+
+[node name="BowHead" type="Sprite" parent="BowGraphics"]
+position = Vector2( 0, -3 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 72, 24, 8, 2 )
+
+[node name="Firepoint" type="Node2D" parent="."]
+position = Vector2( 0, -8 )

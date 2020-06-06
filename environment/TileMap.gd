@@ -19,6 +19,9 @@ func _ready():
 
 func can_move_to_pos(pos: Vector2, include_characters=true, dont_include_group=""):
 #	if include_player:
+	for wall in get_tree().get_nodes_in_group("walls"):
+		if wall.global_position.distance_squared_to(pos) < 3:
+				return false
 	for position_taken in player.get_positions_taken():
 		if position_taken.distance_squared_to(pos) < 3:
 			return false

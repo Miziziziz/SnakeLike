@@ -1,6 +1,6 @@
 extends Node2D
 
-enum DIRECTIONS {UP, DOWN, LEFT, RIGHT}
+enum DIRECTIONS {UP, RIGHT, DOWN, LEFT}
 var cur_direction = DIRECTIONS.UP
 var last_direction = DIRECTIONS.UP
 
@@ -10,12 +10,13 @@ var last_positions = []
 
 var dead = false
 
+onready var move_timer = $MoveTimer
 onready var tilemap : TileMap = get_parent()
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
-	$MoveTimer.connect("timeout", self, "move")
+	move_timer.connect("timeout", self, "move")
 	var offset = Vector2.DOWN * 8
 	for sprite in sprites:
 		sprite.global_position = offset + head_sprite.global_position
@@ -51,8 +52,10 @@ func _process(delta):
 		pressed_move = true
 	
 	if pressed_move:
+#		if move_timer.wait_time - move_timer.time_left < 0.05:
+#			return # give a little buffer so you dont move twice on accident
+		move_timer.start()
 		move()
-		$MoveTimer.start()
 
 func move():
 	var new_pos = head_sprite.global_position + get_offset_for_dir(cur_direction)
@@ -91,6 +94,14 @@ func move():
 		elif character.has_method("incremement_move_counter"):
 			character.incremement_move_counter()
 	
+	var projectiles = get_tree().get_nodes_in_group("projectiles")
+	for projectile in projectiles:
+		if projectile.global_position.distance_squared_to(new_pos) < 3:
+			if (projectile.cur_direction + 2) % 4 == cur_direction:
+				kill()
+				projectile.kill()
+		if projectile.has_method("incremement_move_counter"):
+			projectile.incremement_move_counter()
 	last_direction = cur_direction
 
 const ANGLE_SPRITE_POS = Vector2(16, 56)
@@ -193,7 +204,7 @@ func add_segment():
 func kill():
 	$AnimationPlayer.play("die")
 	dead = true
-	$MoveTimer.stop()
+	move_timer.stop()
 
 func get_positions_taken():
 	return last_positions + [head_sprite.global_position]
