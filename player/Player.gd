@@ -56,7 +56,7 @@ func _process(delta):
 
 func move():
 	var new_pos = head_sprite.global_position + get_offset_for_dir(cur_direction)
-	if !tilemap.can_move_to_pos(new_pos, false, false):
+	if !tilemap.can_move_to_pos(new_pos, false):
 		kill()
 		return
 	

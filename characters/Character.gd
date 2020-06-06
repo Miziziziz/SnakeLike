@@ -8,11 +8,13 @@ enum DIRECTIONS {UP, DOWN, LEFT, RIGHT}
 var cur_direction = DIRECTIONS.UP
 var facing_right = false
 
+var group_to_ignore = ""
+
 func move():
 	if cur_direction == null:
 		return
 	var offset = get_offset_for_dir(cur_direction)
-	if tilemap.can_move_to_pos(global_position + offset):
+	if tilemap.can_move_to_pos(global_position + offset, true, group_to_ignore):
 		pass
 	elif tilemap.can_move_to_pos(global_position + get_offset_for_dir((cur_direction + 1) % DIRECTIONS.size())):
 		offset = get_offset_for_dir((cur_direction + 1) % DIRECTIONS.size())
@@ -113,6 +115,30 @@ func has_line_of_sight_one_way(start_coord, end_coord):
 		if tilemap.get_cell(point[0], point[1]) >= 0:
 			return false
 	return true
+
+func get_dir_to_flee_from(pos):
+	var dir = null
+	if !has_line_of_sight(global_position, pos):
+		return dir
+	
+	var x_offset = pos.x - global_position.x
+	var y_offset = pos.y - global_position.y
+	var move_y = abs(x_offset) > abs(y_offset)
+	var move_right = x_offset < 0
+	var move_up = y_offset > 0
+	
+	if move_y:
+		if move_right:
+			dir = DIRECTIONS.RIGHT
+		else:
+			dir = DIRECTIONS.LEFT
+	else:
+		if move_up:
+			dir = DIRECTIONS.UP
+		else:
+			dir = DIRECTIONS.DOWN
+	
+	return dir
 
 func kill():
 	pass # override

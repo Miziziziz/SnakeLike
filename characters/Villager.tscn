@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://colored_tilemap_packed.png" type="Texture" id=1]
+[ext_resource path="res://characters/Villager.gd" type="Script" id=2]
+
+[node name="Villager" type="Node2D" groups=[
+"characters",
+"villagers",
+]]
+script = ExtResource( 2 )
+
+[node name="Graphics" type="Node2D" parent="."]
+
+[node name="Male" type="Sprite" parent="Graphics"]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 0, 8, 8 )
+
+[node name="Female" type="Sprite" parent="Graphics"]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 0, 8, 8 )

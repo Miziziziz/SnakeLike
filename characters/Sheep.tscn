@@ -5,8 +5,8 @@
 
 [node name="Sheep" type="Node2D" groups=[
 "characters",
+"sheep",
 ]]
-position = Vector2( 4, -4 )
 
 [node name="Graphics" type="Node2D" parent="."]
 

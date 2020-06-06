@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://colored_tilemap_packed.png" type="Texture" id=1]
+[ext_resource path="res://characters/Orc.gd" type="Script" id=2]
+
+[node name="Orc" type="Node2D" groups=[
+"characters",
+"orcs",
+]]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 88, 0, 8, 8 )
