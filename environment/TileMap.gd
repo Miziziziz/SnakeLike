@@ -2,7 +2,9 @@ extends TileMap
 
 var safe_tiles = [
 	5,
-	6
+	6,
+	22,
+	31,
 ]
 
 onready var player = $Player

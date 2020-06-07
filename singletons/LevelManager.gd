@@ -3,6 +3,8 @@ extends Node
 var levels = [
 	"res://levels/FirstOffering.tscn",
 	"res://levels/SecondOffering.tscn",
+	"res://levels/EnterTheVillage.tscn",
+	"res://levels/Townhouse.tscn",
 ]
 var cur_level_ind = 0
 var cur_player_length = 0

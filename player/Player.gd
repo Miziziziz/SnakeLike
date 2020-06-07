@@ -8,6 +8,9 @@ onready var head_sprite = $HeadSprite
 onready var sprites = $Sprites.get_children()
 var last_positions = []
 
+var move_speed = 0.5
+var sprint_speed = 0.2
+
 var dead = false
 
 onready var move_timer = $MoveTimer
@@ -39,8 +42,13 @@ func _process(delta):
 	if dead:
 		return
 	
-	if Input.is_action_just_pressed("ui_accept"):
-		add_segment()
+	if Input.is_action_pressed("sprint"):
+		move_timer.wait_time = sprint_speed
+	else:
+		move_timer.wait_time = move_speed
+	
+#	if Input.is_action_just_pressed("ui_accept"):
+#		add_segment()
 	
 	var pressed_move = false
 	if Input.is_action_just_pressed("move_up") and last_direction != DIRECTIONS.DOWN:

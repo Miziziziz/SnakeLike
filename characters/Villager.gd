@@ -2,6 +2,7 @@ extends Character
 
 const MOVE_RATE = 3 # steps player moves before this character moves
 var move_counter = 0
+export var hold_position = false
 
 func _ready():
 	$Graphics/Female.hide()
@@ -14,7 +15,7 @@ func _ready():
 func incremement_move_counter():
 	move_counter += 1
 	move_counter %= MOVE_RATE
-	if move_counter == 0:
+	if move_counter == 0 and !hold_position:
 		move()
 	if move_counter == 2:
 		choose_dir_to_move_in()
