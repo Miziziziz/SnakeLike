@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui/kleinten_dynfont_large.tres" type="DynamicFont" id=1]
+[ext_resource path="res://levels/Outro.gd" type="Script" id=2]
+
+[node name="Outro" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -171.0
+margin_top = -200.0
+margin_right = 171.0
+margin_bottom = -151.0
+custom_fonts/font = ExtResource( 1 )
+text = "The village is saved!
+The snake spirit returns to its forest"
+align = 1
+
+[node name="Stats" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -84.0
+margin_top = -96.0
+margin_right = 198.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 1 )
+text = "Stats:
+Sheep eaten: 14/28
+Villagers Saved: 5/30
+Grade: B
+Could be better"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -141.0
+margin_top = 80.0
+margin_right = 141.0
+margin_bottom = 207.0
+custom_fonts/font = ExtResource( 1 )
+text = "Made by Miziziziz
+Music:
+
+Press Esc to close
+Press Enter to play again"
+align = 1

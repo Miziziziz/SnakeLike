@@ -162,4 +162,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 group_to_track = "orcs"
+
+[node name="VillagersEaten" type="Label" parent="CanvasLayer"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = -76.0
+margin_right = 70.0
+margin_bottom = -62.0
+rect_scale = Vector2( 4, 4 )
+custom_fonts/font = ExtResource( 6 )
+text = "Sheep: 0/3"
+valign = 2
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+group_to_track = "villagers"
 [connection signal="ate_all_in_group" from="CanvasLayer/OrcsEaten" to="TileMap/Portal" method="activate"]
+[connection signal="ate_all_in_group" from="CanvasLayer/VillagersEaten" to="TileMap/Player" method="lose_villagers_died"]

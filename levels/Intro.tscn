@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui/kleinten_dynfont_large.tres" type="DynamicFont" id=1]
+[ext_resource path="res://ui/KLEINTEN.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://levels/Intro.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 2 )
+
+[node name="Intro" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -140.0
+margin_top = -112.0
+margin_right = 142.0
+margin_bottom = -56.0
+custom_fonts/font = SubResource( 1 )
+text = "SnakeLike"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -140.0
+margin_top = -16.0
+margin_right = 142.0
+margin_bottom = 85.0
+custom_fonts/font = ExtResource( 1 )
+text = "Arrow keys to move
+Space to move faster
+
+Press Enter to start"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

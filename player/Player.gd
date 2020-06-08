@@ -223,5 +223,11 @@ func kill():
 	move_timer.stop()
 	$CanvasLayer/RestartMessage.show()
 
+func lose_villagers_died():
+	$AnimationPlayer.play("die")
+	dead = true
+	move_timer.stop()
+	$CanvasLayer/LoseMessage.show()
+
 func get_positions_taken():
 	return last_positions + [head_sprite.global_position]
