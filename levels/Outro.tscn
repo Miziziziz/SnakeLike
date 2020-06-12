@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://ui/kleinten_dynfont_large.tres" type="DynamicFont" id=1]
 [ext_resource path="res://levels/Outro.gd" type="Script" id=2]
+[ext_resource path="res://TrackPlayer.tscn" type="PackedScene" id=3]
 
 [node name="Outro" type="Control"]
 anchor_right = 1.0
@@ -55,8 +56,12 @@ margin_right = 141.0
 margin_bottom = 207.0
 custom_fonts/font = ExtResource( 1 )
 text = "Made by Miziziziz
-Music:
 
 Press Esc to close
 Press Enter to play again"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TrackPlayer" parent="." instance=ExtResource( 3 )]

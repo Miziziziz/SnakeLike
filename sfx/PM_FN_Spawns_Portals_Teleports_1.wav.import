@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PM_FN_Spawns_Portals_Teleports_1.wav-6ffbf8211cd2a384a0de460fc77cbffd.sample"
+
+[deps]
+
+source_file="res://sfx/PM_FN_Spawns_Portals_Teleports_1.wav"
+dest_files=[ "res://.import/PM_FN_Spawns_Portals_Teleports_1.wav-6ffbf8211cd2a384a0de460fc77cbffd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

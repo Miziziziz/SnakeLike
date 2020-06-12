@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://ui/kleinten_dynfont_large.tres" type="DynamicFont" id=1]
 [ext_resource path="res://ui/KLEINTEN.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://levels/Intro.gd" type="Script" id=3]
+[ext_resource path="res://TrackPlayer.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -50,3 +51,5 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TrackPlayer" parent="." instance=ExtResource( 4 )]

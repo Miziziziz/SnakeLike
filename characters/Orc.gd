@@ -34,6 +34,8 @@ func check_to_kill():
 	for villager in villagers:
 		if global_position.distance_squared_to(villager.global_position) < 2:
 			villager.kill()
+			$DieSounds.play()
+			$BloodSpawner.spawn_blood()
 
 func kill():
 	emit_signal("killed")

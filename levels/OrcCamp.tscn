@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://colored_tilemap_packed.png" type="Texture" id=1]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://characters/Orc.tscn" type="PackedScene" id=7]
 [ext_resource path="res://characters/OrcArcher.tscn" type="PackedScene" id=8]
 [ext_resource path="res://environment/Portal.tscn" type="PackedScene" id=9]
+[ext_resource path="res://TrackPlayer.tscn" type="PackedScene" id=10]
 
 [node name="World" type="Node2D"]
 
@@ -172,6 +173,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 group_to_track = "villagers"
+
+[node name="TrackPlayer" parent="." instance=ExtResource( 10 )]
+cur_track = 3
 [connection signal="ate_all_in_group" from="CanvasLayer/OrcsEaten" to="TileMap/Portal" method="activate"]
 [connection signal="ate_all_in_group" from="CanvasLayer/VillagersEaten" to="TileMap/Player" method="lose_villagers_died"]
 

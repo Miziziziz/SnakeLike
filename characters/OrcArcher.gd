@@ -25,6 +25,7 @@ func fire():
 	arrow_inst.global_position = $Firepoint.global_position
 	arrow_inst.global_rotation = global_rotation
 	arrow_inst.init()
+	$ShootArrowSound.play()
 
 func kill():
 	emit_signal("killed")

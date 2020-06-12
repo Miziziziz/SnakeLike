@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/determined_pursuit_loop.ogg-7db93b82262c3875d3a38a2476323d07.oggstr"
+
+[deps]
+
+source_file="res://music/determined_pursuit_loop.ogg"
+dest_files=[ "res://.import/determined_pursuit_loop.ogg-7db93b82262c3875d3a38a2476323d07.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -34,6 +34,8 @@ func _ready():
 			add_segment()
 
 func _process(delta):
+#	if Input.is_action_just_pressed("ui_accept"):
+#		LevelManager.load_next_level(0)
 	if Input.is_action_just_pressed("exit"):
 		get_tree().quit()
 	if Input.is_action_just_pressed("restart"):
@@ -46,9 +48,6 @@ func _process(delta):
 		move_timer.wait_time = sprint_speed
 	else:
 		move_timer.wait_time = move_speed
-	
-#	if Input.is_action_just_pressed("ui_accept"):
-#		add_segment()
 	
 	var pressed_move = false
 	if Input.is_action_just_pressed("move_up") and last_direction != DIRECTIONS.DOWN:
@@ -84,7 +83,7 @@ func move():
 			kill()
 			return
 		ind += 1
-	
+	$HeadSprite/StepSounds.play()
 	last_positions.push_front(head_sprite.global_position)
 	head_sprite.global_position = new_pos
 	round_position(head_sprite)
@@ -103,6 +102,8 @@ func move():
 				character.kill()
 			else:
 				character.queue_free()
+			$HeadSprite/DieSounds.play()
+			$HeadSprite/BloodSpawner.spawn_blood()
 			add_segment()
 		elif character.has_method("incremement_move_counter"):
 			character.incremement_move_counter()
@@ -222,6 +223,7 @@ func kill():
 	dead = true
 	move_timer.stop()
 	$CanvasLayer/RestartMessage.show()
+	$HeadSprite/DeathSound.play()
 
 func lose_villagers_died():
 	$AnimationPlayer.play("die")

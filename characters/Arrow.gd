@@ -31,10 +31,19 @@ func check_to_kill():
 	for character in get_tree().get_nodes_in_group("characters"):
 		if character.global_position.distance_squared_to(new_pos) < 3:
 				character.kill()
+				spawn_hit_fx()
 				return
 	if tilemap.player.head_sprite.global_position.distance_squared_to(new_pos) < 3:
 		tilemap.player.kill()
+		spawn_hit_fx()
 	
+
+func spawn_hit_fx():
+	var die_sounds = load("res://sfx/DieSounds.tscn").instance()
+	get_tree().get_root().add_child(die_sounds)
+	die_sounds.global_position = global_position
+	die_sounds.play()
+	$BloodSpawner.spawn_blood()
 
 func kill():
 	queue_free()

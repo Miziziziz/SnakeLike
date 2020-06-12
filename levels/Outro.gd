@@ -2,7 +2,7 @@ extends Control
 
 
 func _ready():
-	var txt = "Stats:\n"
+	var txt = "-Stats-\n"
 	txt += "Sheep eaten: " + str(LevelManager.total_sheep - LevelManager.sheep_not_eaten)
 	txt += "/" + str(LevelManager.total_sheep) + "\n"
 	txt += "Villagers saved: " + str(LevelManager.villagers_saved)
@@ -19,7 +19,7 @@ func _ready():
 	elif grade_letter == "D":
 		txt += "Pretty bad tbh, maybe with practice you can get a C"
 	else:
-		txt += "Wow you suck lol. Just give up."
+		txt += "Wow you suck lol."
 	
 	$Stats.text = txt
 	
